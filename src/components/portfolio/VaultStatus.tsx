@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Wrap, StatusBox, SwitchEarn, SwitchWr, ListBox, ProductTit, SubTxt } from '../style/style';
 import TotalList from './TotalList';
-// import Timeline from '~/common/Timeline';
+import Timeline from '../common/Timeline';
 
 const status = [
   {
@@ -45,7 +45,7 @@ const ValutStatus = () => {
             return <TotalList name={val.name} amount={val.amount} />;
           })}
         </ListBox>
-        {/* <Timeline /> */}
+        <Timeline />
       </StatusBox>
     </Wrap>
   );
