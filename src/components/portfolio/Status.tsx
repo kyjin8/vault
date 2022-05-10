@@ -40,9 +40,14 @@ const getButtonLabel = (statusType: STATUS_TYPE) => {
 
 const KYCStatus = () => {
   const [statusType, setstatusType] = useState(STATUS_TYPE.STARTED);
+
   useEffect(() => {
-    setstatusType(STATUS_TYPE.APPROVED);
+    const getKYC = async () => {
+      await setstatusType(STATUS_TYPE.APPROVED);
+    };
+    getKYC();
   }, []);
+
   return (
     <TotalBox>
       <TotalTit>Your KYC Status</TotalTit>
