@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { TotalListBox } from '../components/style/style';
 
-import KYCStatus from '../components/portfolio/KYCStatus';
+import Status from '../components/portfolio/Status';
 import TotalList from '../components/portfolio/TotalList';
 import AssetBox from '../components/portfolio/AssetBox';
 import VaultStatus from '../components/portfolio/VaultStatus';
@@ -19,9 +19,11 @@ const total = [
 ];
 
 const MyPortfolio = () => {
+  const popupRef = useRef({});
+
   return (
     <>
-      <KYCStatus />
+      <Status />
       <TotalListBox>
         {total.map((val: any) => {
           return <TotalList name={val.name} amount={val.amount} />;
