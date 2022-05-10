@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TotalBox, TotalTit, TotalTxt } from '../style/style';
 
 export enum STATUS_TYPE {
@@ -40,6 +40,9 @@ const getButtonLabel = (statusType: STATUS_TYPE) => {
 
 const KYCStatus = () => {
   const [statusType, setstatusType] = useState(STATUS_TYPE.STARTED);
+  useEffect(() => {
+    setstatusType(STATUS_TYPE.APPROVED);
+  }, []);
   return (
     <TotalBox>
       <TotalTit>Your KYC Status</TotalTit>
