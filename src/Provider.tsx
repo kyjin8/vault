@@ -21,6 +21,7 @@ import React, { FC, useMemo } from 'react';
 import Routes from './Routes';
 
 import '@solana/wallet-adapter-react-ui/styles.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const queryClient = new QueryClient();
 
