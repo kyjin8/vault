@@ -1,3 +1,4 @@
+import { Connection } from '@solana/web3.js';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
@@ -13,6 +14,53 @@ export enum QUERY_KEY {
   NETWORK_STATUS = 'networkStatus',
   COINMARKETCAP = 'coinmarketcap',
 }
+
+const solanaRPCUrl = process.env.REACT_APP_SOLANA_API_ENDPOINT || '';
+
+export const SAMPLE_HISTORY_HOURS = 6; // solana explorer
+
+const getavgSlotTIme1H = async (connection: Connection) => {
+  const performanceSamples = await connection.getRecentPerformanceSamples(60 * SAMPLE_HISTORY_HOURS);
+
+  const samples = performanceSamples
+    .filter((sample) => {
+      return sample.numSlots !== 0;
+    })
+    .map((sample) => {
+      return sample.samplePeriodSecs / sample.numSlots;
+    })
+    .slice(0, 60);
+
+  const samplesInHour = samples.length < 60 ? samples.length : 60;
+  const avgSlotTime1h =
+    samples.reduce((sum: number, cur: number) => {
+      return sum + cur;
+    }, 0) / samplesInHour;
+
+  return avgSlotTime1h;
+};
+
+export const useEpochInfo = () => {
+  return useQuery(
+    QUERY_KEY.EPOCH_INFO,
+    async () => {
+      const connection = new Connection(solanaRPCUrl);
+
+      const { epoch, slotIndex, slotsInEpoch } = await connection.getEpochInfo();
+      const avgSlotTime1h = await getavgSlotTIme1H(connection);
+
+      return {
+        currentEpoch: epoch,
+        progress: (100 * slotIndex) / slotsInEpoch,
+        msUntilNextEpoch: (slotsInEpoch - slotIndex) * avgSlotTime1h * 1000,
+      };
+    },
+    {
+      cacheTime: Infinity,
+      staleTime: 30 * 1000,
+    },
+  );
+};
 
 export type PoolInfoResult = {
   [key in string]: {
