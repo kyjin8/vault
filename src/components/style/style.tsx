@@ -2,6 +2,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { fonts, weights, colors, sizes, borders } from '../../styles/Variables';
 
+export const WrapBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const Logo = styled.h1`
   position: relative;
   z-index: 2;
@@ -319,6 +325,11 @@ export const SwitchEarn = styled.div`
     justify-content: center;
     flex-wrap: wrap;
   }
+`;
+
+export const SwitchWr = styled.div`
+  display: flex;
+  align-items: center;
 
   .switch {
     position: absolute;
@@ -390,11 +401,6 @@ export const SwitchEarn = styled.div`
     -webkit-transform: translateX(-33px);
     transform: translateX(-33px);
   }
-`;
-
-export const SwitchWr = styled.div`
-  display: flex;
-  align-items: center;
 `;
 
 // My Profile

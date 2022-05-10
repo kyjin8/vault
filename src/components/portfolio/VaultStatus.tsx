@@ -1,6 +1,6 @@
 // import { values } from 'lodash';
 import React, { useState } from 'react';
-import { Wrap, StatusBox, SwitchEarn, SwitchWr, ListBox, ProductTit, SubTxt } from '../style/style';
+import { WrapBox, Wrap, StatusBox, SwitchEarn, SwitchWr, ListBox, ProductTit, SubTxt } from '../style/style';
 import TotalList from './TotalList';
 // import Timeline from '~/common/Timeline';
 
@@ -20,11 +20,11 @@ const ValutStatus = () => {
   return (
     <Wrap>
       <strong>Vault Status</strong>
-      <SubTxt>
-        When claiming your rewards, you will need to select between SSU and the respective token in which to redeem your
-        rewards.
-      </SubTxt>
-      <SwitchEarn>
+      <WrapBox>
+        <SubTxt>
+          When claiming your rewards, you will need to select between SSU and the respective token in which to redeem
+          your rewards.
+        </SubTxt>
         <SwitchWr>
           <label
             htmlFor="switch"
@@ -37,7 +37,7 @@ const ValutStatus = () => {
             <input type="checkbox" id="switch" className="switch" />
           </label>
         </SwitchWr>
-      </SwitchEarn>
+      </WrapBox>
       <StatusBox>
         <ProductTit>Product Name</ProductTit>
         <ListBox>
