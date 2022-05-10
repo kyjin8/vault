@@ -20,10 +20,12 @@ const Header = () => {
         <img src={Token} alt="token ssu" />
         <HomeLink to="/">Sunny Side Up</HomeLink>
       </Logo>
-      <MySSU>
-        <img src={Token} alt="token ssu" />${intlNumberFormat3(solfarmPoolInfo?.data?.['SSU-USDC'].price ?? 0)}
-      </MySSU>
-      <WalletMultiButton />
+      <BtnWr>
+        <MySSU>
+          <img src={Token} alt="token ssu" />${intlNumberFormat3(solfarmPoolInfo?.data?.['SSU-USDC'].price ?? 0)}
+        </MySSU>
+        <WalletMultiButton />
+      </BtnWr>
     </Wrap>
   );
 };
@@ -70,7 +72,47 @@ const HomeLink = styled(Link)`
   }
 `;
 
-export const MySSU = styled.div`
+const BtnWr = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .wallet-adapter-button-trigger {
+    width: auto;
+    height: 30px;
+    background: #ffe872;
+    border: 1px solid #cecece;
+    border-radius: 10px;
+    color: #3e3a3a;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 30px;
+
+    &:hover {
+      background: #000;
+      color: #fff;
+      transition: all 0.3s ease-in;
+    }
+    .wallet-adapter-button-start-icon {
+      display: none;
+    }
+
+    @media all and (max-width: 979px) {
+      justify-content: center !important;
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      width: calc(100% - 90px);
+    }
+  }
+
+  .wallet-adapter-dropdown {
+    @media all and (max-width: 979px) {
+      position: initial;
+    }
+  }
+`;
+
+const MySSU = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
