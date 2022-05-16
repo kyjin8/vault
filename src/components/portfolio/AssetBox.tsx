@@ -8,14 +8,14 @@ import { BtnWr, BtnType1, BtnType2 } from '../style/style';
 const AssetBox = () => {
   const coinPrice = useCoinMarketCap();
 
-  const products = [
+  const assets = [
     {
       name: 'WBTC',
       rate: `1 wBTC ≈ ${coinPrice.data?.btcPrice} USD`,
       total: '100.000',
     },
     {
-      name: 'WBTC',
+      name: 'WETH',
       rate: `1 wBTC ≈ ${coinPrice.data?.ethPrice} USD`,
       total: '100.000',
     },
@@ -23,9 +23,9 @@ const AssetBox = () => {
 
   return (
     <>
-      {products.map((val: any) => {
+      {assets.map((val: any) => {
         return (
-          <AssetContents key={val}>
+          <AssetContents key={val.name}>
             <AssetInfo name={val.name} rate={val.rate} total={val.total} />
             <BtnWr>
               <BtnType1>Deposit</BtnType1>
