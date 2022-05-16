@@ -10,22 +10,27 @@ export type EpochProps = {
   operEnd: number;
 };
 
+export type EpochResult = {
+  currentEpoch: number;
+  progress: number;
+  msUntilEndEpoch: number;
+}
+
 const Timeline = ({ operStart, operEnd }: EpochProps) => {
   // const { data } = useEpochInfo();
-  // const [progress, setProgress] = useState(0);
-  // const [ms, setMs] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [ms, setMs] = useState(0);
 
-  // useEffect(() => {
-  //   const ttt = async () => {
-  //     const { data } = await OperationEpochInfo(operStart, operEnd);
-  //     setProgress(data?.progress ?? 0);
-  //     setMs(data?.msUntilEndEpoch ?? 0);
-  //     console.log('1');
-  //   };
-  //   ttt();
-  // }, []);
-
-  const { data } = OperationEpochInfo(operStart, operEnd);
+  useEffect(() => {
+    const ttt = async () => {
+      await OperationEpochInfo(operStart, operEnd)
+        .then(res => {
+          setProgress(res.progress);
+          setMs(res.msUntilEndEpoch);
+        });
+    };
+    ttt();
+  }, []);
 
   return (
     <EpochWr>
@@ -44,7 +49,7 @@ const Timeline = ({ operStart, operEnd }: EpochProps) => {
       </EpochBox> */}
       <EpochBox>
         <strong>{operStart}</strong>
-        <ProgressBar label={`ETA ${parseMs(data?.msUntilEndEpoch ?? 0)}`} value={data?.progress} />
+        <ProgressBar label={`ETA ${parseMs(ms ?? 0)}`} value={progress} />
         <strong className="epoch-txt">{operEnd}</strong>
       </EpochBox>
     </EpochWr>

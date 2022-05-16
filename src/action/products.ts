@@ -25,7 +25,7 @@ export const products: ProductInfo[] = [
         progressStatus: 'Running',
         salesStartEpoch: 309,
         salesEndEpoch: 310,
-        operationStartEpoch: 311,
+        operationStartEpoch: 310,
         operationEndEpoch: 312,
         revenuePaymentEndEpoch: 315,
         totalDeposit: 100000

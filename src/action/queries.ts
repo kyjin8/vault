@@ -1,5 +1,6 @@
 import { Connection } from '@solana/web3.js';
 import { useQuery } from 'react-query';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 export enum QUERY_KEY {
@@ -63,37 +64,20 @@ export const useEpochInfo = () => {
   );
 };
 
-export const OperationEpochInfo = (operStart: number, operEnd: number) => {
-  return useQuery(
-    QUERY_KEY.OPER_EPOCH_INFO,
-    async () => {
-      const connection = new Connection(solanaRPCUrl);
+export const OperationEpochInfo = async (operStart: number, operEnd: number) => {
+  const connection = new Connection(solanaRPCUrl);
 
-      const { epoch, slotIndex, slotsInEpoch } = await connection.getEpochInfo();
-      const avgSlotTime1h = await getavgSlotTIme1H(connection);
-      // progress
-      const TotalEpochSlots = (operEnd - operStart) * slotsInEpoch;
-      const CurrEpochSlots = epoch > operStart ? (epoch - operStart) * slotsInEpoch + slotIndex : 0;
-      // msUntilEndEpoch
-      // const TotalRemainSlots =
-      //   (oper_end - epoch - 1) * slotsInEpoch + (slotsInEpoch - slotIndex);
-      // console.log("그냥 구한거", TotalRemainSlots);
-      // console.log("뺀거", TotalEpochSlots - CurrEpochSlots);
-      console.log('현재 에포크: ', epoch, '운영시작에포크: ', operStart, "운영종료에포크: ", operEnd);
-      console.log((100 * CurrEpochSlots) / TotalEpochSlots);
-      // console.log((TotalEpochSlots - CurrEpochSlots) * avgSlotTime1h * 1000);
+  const { epoch, slotIndex, slotsInEpoch } = await connection.getEpochInfo();
+  const avgSlotTime1h = await getavgSlotTIme1H(connection);
+  const TotalEpochSlots = (operEnd - operStart) * slotsInEpoch;
+  const CurrEpochSlots = epoch >= operStart ? (epoch - operStart) * slotsInEpoch + slotIndex : 0;
 
-      return {
-        currentEpoch: epoch,
-        progress: (100 * CurrEpochSlots) / TotalEpochSlots,
-        msUntilEndEpoch: (TotalEpochSlots - CurrEpochSlots) * avgSlotTime1h * 1000,
-      };
-    },
-    {
-      cacheTime: Infinity,
-      staleTime: 30 * 1000,
-    },
-  );
+  return {
+    currentEpoch: epoch,
+    progress: (100 * CurrEpochSlots) / TotalEpochSlots,
+    msUntilEndEpoch: (TotalEpochSlots - CurrEpochSlots) * avgSlotTime1h * 1000,
+
+  };
 };
 
 export type PoolInfoResult = {
