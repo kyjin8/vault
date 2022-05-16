@@ -19,8 +19,6 @@ const total = [
 ];
 
 const MyPortfolio = () => {
-  const popupRef = useRef({});
-
   return (
     <>
       <Status />

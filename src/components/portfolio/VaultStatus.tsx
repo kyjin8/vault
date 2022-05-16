@@ -7,11 +7,15 @@ import Timeline from '../common/Timeline';
 const status = [
   {
     name: 'Lock up amount',
-    amount: 'xxx wBTC',
+    amount: '000.000 COIN',
   },
   {
-    name: 'Estimated Earnings',
-    amount: '$$$ SSU',
+    name: 'Estimated SSU Rewards',
+    amount: '000.000',
+  },
+  {
+    name: 'Estimated *** Rewards',
+    amount: '000.000',
   },
 ];
 
