@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { TotalBox, TotalTit, TotalTxt } from '../style/style';
 
 export enum STATUS_TYPE {
@@ -8,16 +9,16 @@ export enum STATUS_TYPE {
   DENIED = 'DENIED',
 }
 
-const getTitle = (statusType: STATUS_TYPE) => {
+const getBg = (statusType: STATUS_TYPE) => {
   switch (statusType) {
     case STATUS_TYPE.STARTED:
-      return 'Get started';
+      return '#FFE872';
     case STATUS_TYPE.APPROVED:
-      return 'Approved';
+      return '#5DD6AE';
     case STATUS_TYPE.PENDING:
-      return 'Pending';
+      return '#D7D5D3';
     case STATUS_TYPE.DENIED:
-      return 'Denied, click to retry';
+      return '#FF8F8F';
     default:
       return '';
   }
@@ -51,9 +52,16 @@ const KYCStatus = () => {
   return (
     <TotalBox>
       <TotalTit>Your KYC Status</TotalTit>
-      <TotalTxt>{getButtonLabel(statusType)}</TotalTxt>
+      <Btn bg={getBg(statusType)}>{getButtonLabel(statusType)}</Btn>
     </TotalBox>
   );
 };
 
 export default KYCStatus;
+
+const Btn = styled.button<{ bg: any }>`
+  padding: 0 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  background: ${(props) => props.bg};
+`;

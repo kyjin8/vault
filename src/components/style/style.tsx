@@ -302,6 +302,7 @@ export const ProductTit = styled.strong`
 `;
 export const ListBox = styled.div`
   display: flex;
+  align-content: center;
   flex-wrap: wrap;
   width: 40%;
 `;
