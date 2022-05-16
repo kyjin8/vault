@@ -20,12 +20,12 @@ const AssetBox = () => {
       total: '100.000',
     },
   ];
-  
+
   return (
     <>
       {products.map((val: any) => {
         return (
-          <AssetContents>
+          <AssetContents key={val}>
             <AssetInfo name={val.name} rate={val.rate} total={val.total} />
             <BtnWr>
               <BtnType1>Deposit</BtnType1>

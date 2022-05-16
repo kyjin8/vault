@@ -62,6 +62,37 @@ export const useEpochInfo = () => {
   );
 };
 
+export const OperationEpochInfo = (operStart: number, operEnd: number) => {
+  return useQuery(
+    QUERY_KEY.EPOCH_INFO,
+    async () => {
+      const connection = new Connection(solanaRPCUrl);
+
+      const { epoch, slotIndex, slotsInEpoch } = await connection.getEpochInfo();
+      const avgSlotTime1h = await getavgSlotTIme1H(connection);
+      // progress
+      const TotalEpochSlots = (operEnd - operStart) * slotsInEpoch;
+      const CurrEpochSlots = (epoch - operStart) * slotsInEpoch + slotIndex;
+      // msUntilEndEpoch
+      // const TotalRemainSlots =
+      //   (oper_end - epoch - 1) * slotsInEpoch + (slotsInEpoch - slotIndex);
+      // console.log("그냥 구한거", TotalRemainSlots);
+      // console.log("뺀거", TotalEpochSlots - CurrEpochSlots);
+      console.log((TotalEpochSlots - CurrEpochSlots) * avgSlotTime1h * 1000);
+
+      return {
+        currentEpoch: epoch,
+        progress: (100 * CurrEpochSlots) / TotalEpochSlots,
+        msUntilEndEpoch: (TotalEpochSlots - CurrEpochSlots) * avgSlotTime1h * 1000,
+      };
+    },
+    {
+      cacheTime: Infinity,
+      staleTime: 30 * 1000,
+    },
+  );
+};
+
 export type PoolInfoResult = {
   [key in string]: {
     /* eslint-disable-next-line camelcase */
