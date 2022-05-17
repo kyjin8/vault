@@ -9,6 +9,10 @@ ${reset}
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 
+	iframe {
+        pointer-events: none;
+    }
+
 	@keyframes up {
 		from {
 			top: -10px;

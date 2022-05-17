@@ -15,7 +15,7 @@ import {
   getSolletWallet,
   getSolongWallet,
 } from '@solana/wallet-adapter-wallets';
-import { clusterApiUrl } from '@solana/web3.js';
+// import { clusterApiUrl } from '@solana/web3.js';
 import React, { FC, useMemo } from 'react';
 
 import Routes from './Routes';

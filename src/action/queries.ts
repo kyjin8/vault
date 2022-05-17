@@ -1,10 +1,12 @@
 import { Connection } from '@solana/web3.js';
 import { useQuery } from 'react-query';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 export enum QUERY_KEY {
   STAKING_STATE = 'stakingState',
   EPOCH_INFO = 'epochInfo',
+  OPER_EPOCH_INFO = 'operEpochInfo',
   TOKEN_PRICE = 'tokenPrice',
   POOL_STATE = 'poolState',
   POOL_USER_STATE = 'poolUserState',
@@ -60,6 +62,22 @@ export const useEpochInfo = () => {
       staleTime: 30 * 1000,
     },
   );
+};
+
+export const OperationEpochInfo = async (operStart: number, operEnd: number) => {
+  const connection = new Connection(solanaRPCUrl);
+
+  const { epoch, slotIndex, slotsInEpoch } = await connection.getEpochInfo();
+  const avgSlotTime1h = await getavgSlotTIme1H(connection);
+  const TotalEpochSlots = (operEnd - operStart) * slotsInEpoch;
+  const CurrEpochSlots = epoch >= operStart ? (epoch - operStart) * slotsInEpoch + slotIndex : 0;
+
+  return {
+    currentEpoch: epoch,
+    progress: (100 * CurrEpochSlots) / TotalEpochSlots,
+    msUntilEndEpoch: (TotalEpochSlots - CurrEpochSlots) * avgSlotTime1h * 1000,
+
+  };
 };
 
 export type PoolInfoResult = {

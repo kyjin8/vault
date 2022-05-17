@@ -1,22 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import ProgressBar from './epoch/ProgressBar';
 import { parseMs } from './epoch/Epoch';
-import { useEpochInfo } from '../../action/queries';
+import { useEpochInfo, OperationEpochInfo } from '../../action/queries';
 
-const Timeline = () => {
-  const { data } = useEpochInfo();
+export type EpochProps = {
+  operStart: number;
+  operEnd: number;
+};
+
+export type EpochResult = {
+  currentEpoch: number;
+  progress: number;
+  msUntilEndEpoch: number;
+}
+
+const Timeline = ({ operStart, operEnd }: EpochProps) => {
+  // const { data } = useEpochInfo();
+  const [progress, setProgress] = useState(0);
+  const [ms, setMs] = useState(0);
+
+  useEffect(() => {
+    const ttt = async () => {
+      await OperationEpochInfo(operStart, operEnd)
+        .then(res => {
+          setProgress(res.progress);
+          setMs(res.msUntilEndEpoch);
+        });
+    };
+    ttt();
+  }, []);
 
   return (
     <EpochWr>
       <EpochTit>
         <span>TimeLine</span>
       </EpochTit>
+      {/* <EpochBox>
+        <strong>{data?.currentEpoch ?? ""}</strong>
+        <ProgressBar
+          label={`ETA ${parseMs(data?.msUntilNextEpoch ?? 0)}`}
+          value={data?.progress ?? 0}
+        />
+        <strong className="epoch-txt">
+          {data?.currentEpoch ? data?.currentEpoch + 1 : ""}
+        </strong>
+      </EpochBox> */}
       <EpochBox>
-        <strong>{data?.currentEpoch ?? ''}</strong>
-        <ProgressBar label={`ETA ${parseMs(data?.msUntilNextEpoch ?? 0)}`} value={data?.progress ?? 0} />
-        <strong className="epoch-txt">{data?.currentEpoch ? data?.currentEpoch + 1 : ''}</strong>
+        <strong>{operStart}</strong>
+        <ProgressBar label={`ETA ${parseMs(ms ?? 0)}`} value={progress} />
+        <strong className="epoch-txt">{operEnd}</strong>
       </EpochBox>
     </EpochWr>
   );
