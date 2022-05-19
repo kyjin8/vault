@@ -271,6 +271,8 @@ export const AssetTotalBox = styled.div`
 export const AssetTotalTxt = styled.div``;
 export const TokenTo = styled.img`
   margin: 0 15px 0 0;
+  width: 40px;
+  height: 40px;
 `;
 export const ContentsTit = styled.strong`
   font-size: ${sizes.middle};
