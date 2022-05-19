@@ -140,6 +140,7 @@ export const TotalBox = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin: 0 0 20px;
 `;
 export const TotalTit = styled.span`
   display: flex;
@@ -238,6 +239,7 @@ export const BtnType3 = styled.button`
 
 // Asset Info
 export const Wrap = styled.div`
+  margin: 80px 0;
   text-align: left;
 
   strong {

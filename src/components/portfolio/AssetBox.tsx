@@ -11,13 +11,23 @@ const AssetBox = () => {
 
   const assets = [
     {
-      name: 'WBTC',
-      rate: `1 wBTC ≈ ${coinPrice.data?.btcPrice} USD`,
+      name: 'BTC',
+      rate: `1 BTC ≈ ${coinPrice.data?.btcPrice} USD`,
       total: '100.000',
     },
     {
-      name: 'WETH',
-      rate: `1 wBTC ≈ ${coinPrice.data?.ethPrice} USD`,
+      name: 'ETH',
+      rate: `1 ETH ≈ ${coinPrice.data?.ethPrice} USD`,
+      total: '100.000',
+    },
+    {
+      name: 'USDT',
+      rate: `1 USDC ≈ ${coinPrice.data?.ethPrice} USD`,
+      total: '100.000',
+    },
+    {
+      name: 'USDC',
+      rate: `1 USDT ≈ ${coinPrice.data?.ethPrice} USD`,
       total: '100.000',
     },
   ];

@@ -5,13 +5,16 @@ import PopupWarning from '../components/popups/PopupWarning';
 
 const earn = [
   {
-    name: 'WBTC',
+    name: 'BTC',
   },
   {
-    name: 'WBTC',
+    name: 'ETH',
   },
   {
-    name: 'WBTC',
+    name: 'USDT',
+  },
+  {
+    name: 'USDC',
   },
 ];
 
