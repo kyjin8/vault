@@ -12,10 +12,10 @@ export type InfoProps = {
 };
 
 const AssetInfo: React.FC<InfoProps> = ({ name, rate, total }) => {
-  console.log('name', name);
-  // console.log('test', TOKENS?.[name]?.picUrl);
-  console.log('TOKENS', TOKENS);
-  console.log('TOKENS_ARRAY ', _.valuesIn(TOKENS));
+  // console.log('name', name);
+  // // console.log('test', TOKENS?.[name]?.picUrl);
+  // console.log('TOKENS', TOKENS);
+  // console.log('TOKENS_ARRAY ', _.valuesIn(TOKENS));
   return (
     <AssetLeft>
       <AssetTotalBox>
