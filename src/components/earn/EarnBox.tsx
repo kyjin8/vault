@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { fonts, weights, colors, sizes, borders } from '../../styles/Variables';
 import { TokenTo } from '../style/style';
 import TokenIcon from '../../images/token_sample.svg';
+import { TOKENS_ARRAY, TOKENS } from '../../action/tokens';
 
 export type EarnProps = {
   name?: string;
@@ -18,7 +19,8 @@ const EarnBox: React.FC<EarnProps> = ({ name, closes, apr, timeline }) => {
       <div>
         <span className="close-time">Closes in {closes}</span>
         <div className="product-name">
-          <TokenTo src={TokenIcon} alt="token sample" />
+          {/* <TokenTo src={TokenIcon} alt="token sample" /> */}
+          <TokenTo src={TOKENS_ARRAY.find(token => token.symbol === name).picUrl ?? TokenIcon} alt="token img" />
           <strong>{name}</strong>
         </div>
       </div>
