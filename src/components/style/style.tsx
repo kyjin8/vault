@@ -349,15 +349,15 @@ export const SwitchWr = styled.div`
     transition: all 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
     :before {
-      content: 'Running';
-      left: 23px;
+      content: 'Open';
+      left: 29px;
       color: #3a3a3a;
     }
 
     :after {
       right: 25px;
       color: #bbb;
-      content: 'Claim';
+      content: 'Closed';
     }
 
     :before,
