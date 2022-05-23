@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { sizes, colors } from '../../styles/Variables';
 
 import IconClose from '../../images/popup-close.svg';
 import PoolsBg from '../../images/pools_bg.svg';
@@ -25,8 +26,11 @@ const PopupWithdraw = ({ showWithdrawPopup, setWithdrawPopup }: PopupProps) => {
             <strong>Withdraw</strong>
             <Contents>
               <input type="text" placeholder="Type amount to Withdraw" />
+              <TxtWarning>Amount must be less than or equal to account balance</TxtWarning>
               <ContentList>
                 <li>Transaction Fee</li>
+                <li>1.20000000</li>
+                <li>Amount to receive</li>
                 <li>1.20000000</li>
               </ContentList>
             </Contents>
@@ -119,12 +123,23 @@ const Contents = styled.div`
   }
 `;
 
+const TxtWarning = styled.p`
+  display: none;
+  font-size: ${sizes.small};
+  color: ${colors.red};
+  text-align: center;
+`;
+
 const ContentList = styled.ul`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 10px 0 0 0;
 
   li {
     width: 50%;
+    margin: 5px 0;
+    line-height: 25px;
 
     &:nth-child(even) {
       text-align: right;
@@ -146,7 +161,7 @@ const BtnSubmit = styled.button`
   width: 100%;
   height: 50px;
   line-height: 50px;
-  background: #ffffff;
+  background: ${colors.yellow};
   border-radius: 10px;
   font-size: 18px;
   font-weight: 600;
