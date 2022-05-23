@@ -12,20 +12,19 @@ const earn = [
     name: 'ASSET NAME',
     apr: '00.00%',
     epoch: 'XXX epoch - XXX epoch',
-    setIsLaunch: false,
+    launch: 'launch',
   },
   {
     name: 'ASSET NAME',
     apr: '00.00%',
     epoch: 'XXX epoch - XXX epoch',
-    setIsLaunch: true,
+    launch: 'closed',
   },
 ];
 
 const Earn = () => {
   const [showWarningPopup, setWarningPopup] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
-  const [isLaunch, setIsLaunch] = useState(false);
 
   return (
     <>
@@ -49,14 +48,27 @@ const Earn = () => {
             </label>
           </SwitchWr>
         </WrapBox>
-        {earn.map((val) => {
-          console.log(setIsLaunch);
-          return (
-            <>
-              <EarnList name={val.name} apr={val.apr} epoch={val.epoch} setIsLaunch={val.setIsLaunch} />
-            </>
-          );
-        })}
+        {isChecked ? (
+          <>
+            {earn.map((val) => {
+              return (
+                <>
+                  <EarnList name={val.name} apr={val.apr} epoch={val.epoch} launch={val.launch} />
+                </>
+              );
+            })}
+          </>
+        ) : (
+          <>
+            {earn.map((val) => {
+              return (
+                <>
+                  <EarnList name={val.name} apr={val.apr} epoch={val.epoch} launch={val.launch} />
+                </>
+              );
+            })}
+          </>
+        )}
 
         <PopupWarning showWarningPopup={showWarningPopup} setWarningPopup={setWarningPopup} />
       </Wrap>

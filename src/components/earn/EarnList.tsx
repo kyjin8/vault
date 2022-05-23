@@ -7,14 +7,14 @@ export type EarnProps = {
   name?: string;
   apr?: string;
   epoch?: string;
-  setIsLaunch?: boolean;
+  launch?: string;
 };
 
 const EarnList: React.FC<EarnProps> = (props) => {
-  const { name, apr, epoch, setIsLaunch } = props;
+  const { name, apr, epoch, launch } = props;
 
   return (
-    <Wrap>
+    <Wrap className={launch}>
       <TokenWr>
         <img src={Token} alt="token ssu" />
         <TokenName>{name}</TokenName>
@@ -24,7 +24,7 @@ const EarnList: React.FC<EarnProps> = (props) => {
         <span>{apr}</span>
       </Apr>
       <Epoch>{epoch}</Epoch>
-      <Btn className={{ setIsLaunch } ? 'on' : ''}>Launch</Btn>
+      <Btn className={launch}>Launch</Btn>
     </Wrap>
   );
 };
@@ -67,13 +67,13 @@ const Btn = styled.button`
   width: 90px;
   height: 38px;
   line-height: 38px;
-  background: #c4c4c4;
+  background: ${colors.yellow};
   border-radius: 10px;
   font-size: 14px;
   font-weight: 600;
 
-  &.on {
-    background: ${colors.yellow};
+  &.closed {
+    background: #c4c4c4;
   }
 
   :disabled {
