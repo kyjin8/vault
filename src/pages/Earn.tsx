@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// import EarnBox from '../components/earn/EarnBox';
 import EarnList from '../components/earn/EarnList';
-import { EarnWrap } from '../components/style/style';
-import { Wrap, WrapBox, SubTxt, SwitchWr, TokenTo } from '../components/style/style';
+import { Wrap, WrapBox, SubTxt, SwitchWr } from '../components/style/style';
 import TimeLine from '../components/common/Timeline';
 import PopupWarning from '../components/popups/PopupWarning';
 
