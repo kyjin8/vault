@@ -74,9 +74,8 @@ export const OperationEpochInfo = async (operStart: number, operEnd: number) => 
 
   return {
     currentEpoch: epoch,
-    progress: (100 * CurrEpochSlots) / TotalEpochSlots,
+    progress: Math.min((100 * CurrEpochSlots) / TotalEpochSlots, 100),
     msUntilEndEpoch: (TotalEpochSlots - CurrEpochSlots) * avgSlotTime1h * 1000,
-
   };
 };
 
