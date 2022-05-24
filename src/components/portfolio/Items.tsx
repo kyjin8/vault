@@ -1,37 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
+import { products, ProductInfo } from '../../action/products';
 import Token from '../../images/token_ssu.svg';
 import { fonts, weights, colors, sizes, borders } from '../../styles/Variables';
 import { TotalBox, TotalTxt } from '../style/style';
 
 import TimeLine from '../common/Timeline';
 
-export type ItemProps = {
-  name?: string;
-};
-
-const Items: React.FC<ItemProps> = (props) => {
-  const { name } = props;
+const Items = () => {
   return (
-    <Wrap>
-      <Tit>
-        <TokenWr>
-          <img src={Token} alt="token ssu" />
-          <TokenName>{name}</TokenName>
-        </TokenWr>
-        <TotalBox>
-          <TotalTxt fontWeight="bold" textAlign="flex-start">
-            Lock up amount
-          </TotalTxt>
-          <TotalTxt fontWeight="bold" textAlign="flex-end">
-            000.000 COIN
-          </TotalTxt>
-        </TotalBox>
-      </Tit>
-      <Contents>
-        <TimeLine operStart={2} operEnd={3} />
-      </Contents>
-    </Wrap>
+    <>
+      {products.map((product: ProductInfo) => {
+        return (
+          <Wrap>
+            <Tit>
+              <TokenWr>
+                <img src={Token} alt="token ssu" />
+                <TokenName>{product.prdNm}</TokenName>
+              </TokenWr>
+              <TotalBox>
+                <TotalTxt fontWeight="bold" textAlign="flex-start">
+                  Lock up amount
+                </TotalTxt>
+                <TotalTxt fontWeight="bold" textAlign="flex-end">
+                  000.000 COIN
+                </TotalTxt>
+              </TotalBox>
+            </Tit>
+            <Contents>
+              <TimeLine operStart={product.operationStartEpoch} operEnd={product.operationEndEpoch} />
+            </Contents>
+          </Wrap>
+        );
+      })}
+    </>
   );
 };
 

@@ -14,7 +14,6 @@ import Header from '../components/common/Header';
 import SubTxt from '../components/common/SubTxt';
 import MyPortfolio from './MyPortfolio';
 import Earn from './Earn';
-import MyProfile from './MyProfile';
 
 const Main = () => {
   return (
@@ -34,9 +33,6 @@ const Main = () => {
             </TabPanel>
             <TabPanel value={1}>
               <MyPortfolio />
-            </TabPanel>
-            <TabPanel value={2}>
-              <MyProfile />
             </TabPanel>
           </TabsUnstyled>
         </TabWr>
