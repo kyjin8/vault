@@ -180,7 +180,7 @@ export const AssetContents = styled.div`
   border-radius: 20px;
 `;
 
-// buttons
+// buttons style
 export const BtnWr = styled.div`
   display: flex;
   flex-wrap: wrap;
