@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { TotalBox, TotalTit, TotalTxt } from '../style/style';
+import { TotalBox, TotalTxt } from '../style/style';
 
 export enum STATUS_TYPE {
   STARTED = 'STARTED',
@@ -51,7 +51,9 @@ const KYCStatus = () => {
 
   return (
     <TotalBox>
-      <TotalTit>Your KYC Status</TotalTit>
+      <TotalTxt fontWeight="bold" textAlign="flex-start">
+        Your KYC Status
+      </TotalTxt>
       <Btn bg={getBg(statusType)}>{getButtonLabel(statusType)}</Btn>
     </TotalBox>
   );

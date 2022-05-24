@@ -1,14 +1,16 @@
 import React, { useRef, useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
-import styled from 'styled-components';
 import { TotalListBox } from '../components/style/style';
-
 import Status from '../components/portfolio/Status';
-import { TotalBox, TotalTit, TotalTxt } from '../components/style/style';
-import AssetBox from '../components/portfolio/AssetBox';
-import VaultStatus from '../components/portfolio/VaultStatus';
+import Items from '../components/portfolio/Items';
+import { StatusWr, TotalTxt, Wrap, WrapBox, SubTxt, LinkTo } from '../components/style/style';
 import { intlNumberFormat4 } from '../utils/utils';
 import { useBalance } from '../utils/balance';
+
+// interface MyProps {
+//   showItems: boolean;
+//   setItems: React.Dispatch<React.SetStateAction<boolean>>;
+// }
 
 const MyPortfolio = () => {
   const { publicKey } = useWallet();
@@ -19,20 +21,44 @@ const MyPortfolio = () => {
     const address = publicKey?.toBase58() || '';
     return `(${address.slice(0, 4)}...${address.slice(-6)})`;
   };
-
+  const [isItem, setIsItem] = useState(true);
   return (
     <>
-      <Status />
-      <TotalListBox>
-        {/* 볼트에 입금한 총 자산 - 지갑 잔액으로 임시 대체 */}
-        <TotalTit>My Assets</TotalTit>
-        <TotalTxt>{balance || "0.00"} USD</TotalTxt>
-        {/* 예치 상품에 넣은 자산 */}
-        <TotalTit>Lock Up Amount</TotalTit>
-        <TotalTxt>0.00 USD</TotalTxt>
-      </TotalListBox>
-      <AssetBox />
-      <VaultStatus />
+      <StatusWr>
+        <Status />
+        <TotalListBox>
+          {/* 볼트에 입금한 총 자산 - 지갑 잔액으로 임시 대체 */}
+          <TotalTxt fontWeight="normal" textAlign="flex-start">
+            My total assets
+          </TotalTxt>
+          <TotalTxt fontWeight="normal" textAlign="flex-end">
+            {balance || '0.00'} USD
+          </TotalTxt>
+          {/* 예치 상품에 넣은 자산 */}
+        </TotalListBox>
+      </StatusWr>
+      <Wrap>
+        <strong>Vault Status</strong>
+        <>
+          <SubTxt>
+            When claiming your rewards, you will need to select between SSU and the respective token in which to redeem
+            your rewards.
+          </SubTxt>
+          {isItem ? (
+            <ul>
+              <Items />
+            </ul>
+          ) : (
+            <LinkTo
+              onClick={() => {
+                window.location.href = '/';
+              }}
+            >
+              Click on the &nbsp;<span>Earn tab</span> to start!
+            </LinkTo>
+          )}
+        </>
+      </Wrap>
     </>
   );
 };

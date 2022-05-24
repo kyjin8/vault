@@ -60,19 +60,7 @@ export default Timeline;
 
 /* Timeline style */
 
-const EpochWr = styled.div`
-  position: relative;
-  width: 100%;
-  max-width: 603px;
-  min-width: 320px;
-  padding: 22px 31px;
-  text-align: left;
-
-  @media all and (max-width: 979px) {
-    padding: 20px;
-    margin: 0 auto 24px;
-  }
-`;
+const EpochWr = styled.article``;
 
 const EpochTit = styled.div`
   display: flex;

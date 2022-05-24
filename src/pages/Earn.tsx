@@ -26,9 +26,9 @@ const Earn = () => {
 
   return (
     <>
-      {/* <TimeWr>
-        <TimeLine />
-      </TimeWr> */}
+      <TimeWr>
+        <TimeLine operStart={0} operEnd={0} />
+      </TimeWr>
       <Wrap>
         <strong>Start Investing now</strong>
         <WrapBox>
@@ -78,9 +78,21 @@ export default Earn;
 
 const TimeWr = styled.div`
   margin: 20px 0 50px 0;
-  > div {
+
+  > article {
+    position: relative;
+    width: 100%;
+    max-width: 603px;
+    min-width: 320px;
+    padding: 22px 31px;
     margin: 0 auto;
     border: solid 1px #cecece;
     border-radius: 20px;
+    text-align: left;
+
+    @media all and (max-width: 979px) {
+      padding: 20px;
+      margin: 0 auto 24px;
+    }
   }
 `;
