@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, FC, useCallback } from 'react';
+import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { Keypair, SystemProgram, Transaction, PublicKey } from '@solana/web3.js';
 import { useCoinMarketCap } from '../../action/queries';
 import { AssetContents } from '../style/style';
 import AssetInfo from './AssetInfo';
@@ -8,6 +10,27 @@ import PopupWithdraw from '../popups/PopupWithdraw';
 
 const AssetBox = () => {
   const coinPrice = useCoinMarketCap();
+  const { connection } = useConnection();
+  const { publicKey, sendTransaction } = useWallet();
+
+  const myPub = new PublicKey('54tQ6soXdwqg3i13NzQu6J8cKbBxfeFQWKGNcQ5CgcVx');
+
+  const onClick = useCallback(async () => {
+    if (!publicKey) return;
+
+    const transaction = new Transaction().add(
+      SystemProgram.transfer({
+        fromPubkey: publicKey,
+        // toPubkey: Keypair.generate().publicKey,
+        toPubkey: myPub,
+        lamports: 1000000,
+      }),
+    );
+
+    const signature = await sendTransaction(transaction, connection);
+
+    await connection.confirmTransaction(signature, 'processed');
+  }, [publicKey, sendTransaction, connection]);
 
   const assets = [
     {
@@ -57,6 +80,9 @@ const AssetBox = () => {
                 >
                   Withdraw
                 </BtnType2>
+                <BtnType1 onClick={onClick} disabled={!publicKey}>
+                  Send
+                </BtnType1>
               </BtnWr>
             </AssetContents>
             <PopupDeposit showDepositPopup={showDepositPopup} setDepositPopup={setDepositPopup} />
