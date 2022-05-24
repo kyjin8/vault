@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import IconClose from '../../images/popup-close.svg';
+import Token from '../../images/token_ssu.svg';
 import PoolsBg from '../../images/pools_bg.svg';
+import { colors, sizes, weights } from '../../styles/Variables';
 
 interface PopupProps {
   showDepositPopup: boolean;
@@ -24,11 +26,21 @@ const PopupDeposit = ({ showDepositPopup, setDepositPopup }: PopupProps) => {
             </PopupClose>
             <strong>Deposit</strong>
             <Contents>
-              <input type="text" placeholder="Type amount to deposit" />
-              <ContentList>
-                <li>Transaction Fee</li>
-                <li>1.20000000</li>
-              </ContentList>
+              <form>
+                <input type="text" placeholder="Type amount to deposit" />
+                <TokenWr>
+                  <img src={Token} alt="token ssu" />
+                  Token
+                </TokenWr>
+              </form>
+              <Btncode type="button">QR CODE</Btncode>
+              <ul>
+                <li>
+                  Send only (Asset Type) to this deposit address. Sending other coins may result in the loss of your
+                  crypto asset.
+                </li>
+                <li>Make sure to double check deposit address before depositing.</li>
+              </ul>
             </Contents>
             <PoolsSubmit>
               <BtnSubmit
@@ -108,14 +120,46 @@ const PopupClose = styled.button`
 
 const Contents = styled.div`
   width: 100%;
+  text-align: center;
 
-  input {
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 10px;
+
+    padding: 10px 15px 10px 10px;
     height: 40px;
     line-height: 40px;
-    border: 0;
     border-radius: 5px;
+    background: #fff;
+  }
+
+  input {
+    width: calc(100% - 90px);
+    height: 100%;
+    border: 0;
+  }
+
+  ul {
+    margin-left: 20px;
+    list-style: disc;
+    text-align: left;
+
+    li {
+      line-height: 20px;
+    }
+  }
+`;
+
+const TokenWr = styled.div`
+  display: flex;
+  align-items: center;
+  font-weight: ${weights.bold};
+
+  img {
+    width: 20px;
+    margin: 0 5px 0 0;
   }
 `;
 
@@ -146,7 +190,7 @@ const BtnSubmit = styled.button`
   width: 100%;
   height: 50px;
   line-height: 50px;
-  background: #ffffff;
+  background: ${colors.yellow};
   border-radius: 10px;
   font-size: 18px;
   font-weight: 600;
@@ -156,4 +200,15 @@ const BtnSubmit = styled.button`
     line-height: 35px;
     font-size: 16px;
   }
+`;
+
+const Btncode = styled.button`
+  width: 90px;
+  height: 40px;
+  margin: 20px auto;
+  background: ${colors.yellow};
+  border: solid 1px ${colors.black};
+  border-radius: 5px;
+  font-size: ${sizes.small};
+  font-weight: ${weights.bold};
 `;

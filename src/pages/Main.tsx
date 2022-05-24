@@ -26,14 +26,14 @@ const Main = () => {
         <TabWr>
           <TabsUnstyled defaultValue={0}>
             <TabsList>
-              <Tab>My Portfolio</Tab>
               <Tab>Earn</Tab>
+              <Tab>My Portfolio</Tab>
             </TabsList>
             <TabPanel value={0}>
-              <MyPortfolio />
+              <Earn />
             </TabPanel>
             <TabPanel value={1}>
-              <Earn />
+              <MyPortfolio />
             </TabPanel>
             <TabPanel value={2}>
               <MyProfile />
