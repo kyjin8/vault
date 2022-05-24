@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import EarnList from '../components/earn/EarnList';
 import { Wrap, WrapBox, SubTxt, SwitchWr } from '../components/style/style';
-import TimeLine from '../components/common/Timeline';
+import TimeLine from '../components/common/CurrTimeline';
 import PopupWarning from '../components/popups/PopupWarning';
 
 const earn = [
@@ -27,7 +27,7 @@ const Earn = () => {
   return (
     <>
       <TimeWr>
-        <TimeLine operStart={0} operEnd={0} />
+        <TimeLine />
       </TimeWr>
       <Wrap>
         <strong>Start Investing now</strong>
