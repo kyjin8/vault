@@ -1,9 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { TotalListBox } from '../components/style/style';
 import Status from '../components/portfolio/Status';
 import Items from '../components/portfolio/Items';
-import { StatusWr, TotalTxt, Wrap, WrapBox, SubTxt, LinkTo } from '../components/style/style';
+import { StatusWr, TotalListBox, TotalTxt, Wrap, WrapBox, SubTxt, LinkTo } from '../components/style/style';
 import { intlNumberFormat4 } from '../utils/utils';
 import { useBalance } from '../utils/balance';
 
