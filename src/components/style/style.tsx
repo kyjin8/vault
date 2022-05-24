@@ -149,21 +149,13 @@ export const TotalBox = styled.div`
   flex-wrap: wrap;
   margin: 0 0 20px;
 `;
-export const TotalTit = styled.span<{ fontWeight: any }>`
+export const TotalTxt = styled.span<{ fontWeight: any; textAlign: any }>`
   display: flex;
+  justify-content: ${(props) => props.textAlign};
   align-items: center;
   width: 50%;
   margin: 5px 0;
   font-weight: ${(props) => props.fontWeight};
-  text-align: left;
-`;
-export const TotalTxt = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 50%;
-  margin: 5px 0;
-  text-align: right;
 `;
 
 export const LinkTo = styled.a`

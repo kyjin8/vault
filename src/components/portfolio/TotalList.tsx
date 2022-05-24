@@ -1,5 +1,5 @@
 import React from 'react';
-import { TotalBox, TotalTit, TotalTxt } from '../style/style';
+import { TotalTxt } from '../style/style';
 
 export type ListProps = {
   name?: string;
@@ -9,8 +9,12 @@ export type ListProps = {
 const TotalList: React.FC<ListProps> = ({ name, amount }) => {
   return (
     <>
-      <TotalTit fontWeight="normal">{name}</TotalTit>
-      <TotalTxt>{amount}</TotalTxt>
+      <TotalTxt fontWeight="normal" textAlign="flex-start">
+        {name}
+      </TotalTxt>
+      <TotalTxt fontWeight="normal" textAlign="flex-end">
+        {amount}
+      </TotalTxt>
     </>
   );
 };
