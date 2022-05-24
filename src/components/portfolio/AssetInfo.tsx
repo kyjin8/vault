@@ -12,14 +12,12 @@ export type InfoProps = {
 };
 
 const AssetInfo: React.FC<InfoProps> = ({ name, rate, total }) => {
-  console.log('TOKENS_ARRAY ', TOKENS_ARRAY.find(token => token.symbol === name).picUrl);
-
   return (
     <AssetLeft>
       <AssetTotalBox>
         {/* token image */}
         {/* <TokenTo src={TokenIcon} alt="token sample" /> */}
-        <TokenTo src={TOKENS_ARRAY.find(token => token.symbol === name).picUrl ?? TokenIcon} alt="token img" />
+        <TokenTo src={TOKENS_ARRAY.find((token) => token.symbol === name).picUrl ?? TokenIcon} alt="token img" />
         <AssetTotalTxt>
           <ContentsTit>{name}</ContentsTit>
           <AssetSub>{rate}</AssetSub>

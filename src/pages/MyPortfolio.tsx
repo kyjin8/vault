@@ -26,7 +26,7 @@ const MyPortfolio = () => {
       <TotalListBox>
         {/* 볼트에 입금한 총 자산 - 지갑 잔액으로 임시 대체 */}
         <TotalTit>My Assets</TotalTit>
-        <TotalTxt>{balance || "0.00"} USD</TotalTxt>
+        <TotalTxt>{balance || '0.00'} USD</TotalTxt>
         {/* 예치 상품에 넣은 자산 */}
         <TotalTit>Lock Up Amount</TotalTit>
         <TotalTxt>0.00 USD</TotalTxt>
