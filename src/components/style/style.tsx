@@ -1,3 +1,4 @@
+import { border } from '@mui/system';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { fonts, weights, colors, sizes, borders } from '../../styles/Variables';
@@ -98,6 +99,12 @@ export const BoxLayout = styled.div`
   }
 `;
 
+export const StatusWr = styled.div`
+  padding: 25px;
+  border: ${borders.gray};
+  border-radius: 20px;
+`;
+
 export const Tit = styled.h2`
   font-size: ${sizes.tit};
 `;
@@ -142,11 +149,12 @@ export const TotalBox = styled.div`
   flex-wrap: wrap;
   margin: 0 0 20px;
 `;
-export const TotalTit = styled.span`
+export const TotalTit = styled.span<{ fontWeight: any }>`
   display: flex;
   align-items: center;
   width: 50%;
   margin: 5px 0;
+  font-weight: ${(props) => props.fontWeight};
   text-align: left;
 `;
 export const TotalTxt = styled.span`
@@ -156,6 +164,18 @@ export const TotalTxt = styled.span`
   width: 50%;
   margin: 5px 0;
   text-align: right;
+`;
+
+export const LinkTo = styled.a`
+  display: block;
+  margin: 50px 0;
+  color: ${colors.black};
+  font-weight: ${weights.bold};
+  text-align: center;
+
+  span {
+    text-decoration: underline;
+  }
 `;
 
 // My Assets Products Box

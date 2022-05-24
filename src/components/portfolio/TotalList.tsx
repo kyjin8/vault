@@ -9,7 +9,7 @@ export type ListProps = {
 const TotalList: React.FC<ListProps> = ({ name, amount }) => {
   return (
     <>
-      <TotalTit>{name}</TotalTit>
+      <TotalTit fontWeight="normal">{name}</TotalTit>
       <TotalTxt>{amount}</TotalTxt>
     </>
   );
