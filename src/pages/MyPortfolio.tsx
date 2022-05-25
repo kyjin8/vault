@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import Status from '../components/portfolio/Status';
 import Items from '../components/portfolio/Items';
-import { StatusWr, TotalListBox, TotalTxt, Wrap, WrapBox, SubTxt, LinkTo } from '../components/style/style';
+import { StatusWr, TotalListBox, TotalTxt, Wrap, ItemWr, SubTxt, LinkTo } from '../components/style/style';
 import { intlNumberFormat4 } from '../utils/utils';
 import { useBalance } from '../utils/balance';
 
@@ -21,6 +21,7 @@ const MyPortfolio = () => {
     return `(${address.slice(0, 4)}...${address.slice(-6)})`;
   };
   const [isItem, setIsItem] = useState(true);
+  const [isClaim, setIsClaim] = useState(false);
   return (
     <>
       <StatusWr>
@@ -44,9 +45,9 @@ const MyPortfolio = () => {
             your rewards.
           </SubTxt>
           {isItem ? (
-            <ul>
-              <Items />
-            </ul>
+            <ItemWr>
+              <Items isClaim={isClaim} setIsClaim={setIsClaim} />
+            </ItemWr>
           ) : (
             <LinkTo
               onClick={() => {
