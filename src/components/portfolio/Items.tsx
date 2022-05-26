@@ -6,6 +6,7 @@ import { weights, borders } from '../../styles/Variables';
 import { TotalBox, TotalTxt } from '../style/style';
 
 import TimeLine from '../common/Timeline';
+import PopupClaim from '../popups/PopupClaim';
 
 export type ItemsProps = {
   isClaim: boolean;
@@ -14,6 +15,7 @@ export type ItemsProps = {
 
 const Items: React.FC<ItemsProps> = (props) => {
   const { isClaim, setIsClaim } = props;
+  const [showClaimPopup, setClaimPopup] = useState(false);
   return (
     <>
       {products.map((product: ProductInfo) => {
@@ -44,7 +46,14 @@ const Items: React.FC<ItemsProps> = (props) => {
                   <p className="amount">0.000 SSU</p>
                 </Box>
                 {isClaim ? (
-                  <Btn bg="#ffe872">Claim SSU</Btn>
+                  <Btn
+                    bg="#ffe872"
+                    onClick={() => {
+                      setClaimPopup(true);
+                    }}
+                  >
+                    Claim SSU
+                  </Btn>
                 ) : (
                   <BtnWr>
                     <Btn bg="#c6c6c6">Claim SSU</Btn>
@@ -67,6 +76,7 @@ const Items: React.FC<ItemsProps> = (props) => {
                 )}
               </ClameWr>
             </Contents>
+            <PopupClaim showClaimPopup={showClaimPopup} setClaimPopup={setClaimPopup} />
           </Wrap>
         );
       })}

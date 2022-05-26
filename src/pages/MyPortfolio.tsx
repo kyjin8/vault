@@ -21,7 +21,7 @@ const MyPortfolio = () => {
     return `(${address.slice(0, 4)}...${address.slice(-6)})`;
   };
   const [isItem, setIsItem] = useState(true);
-  const [isClaim, setIsClaim] = useState(false);
+  const [isClaim, setIsClaim] = useState(true);
   return (
     <>
       <StatusWr>
