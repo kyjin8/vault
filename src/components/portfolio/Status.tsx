@@ -50,7 +50,7 @@ const KYCStatus = () => {
   }, []);
 
   return (
-    <TotalBox>
+    <TotalBox margin="0 0 20px 0">
       <TotalTxt fontWeight="bold" textAlign="flex-start">
         Your KYC Status
       </TotalTxt>

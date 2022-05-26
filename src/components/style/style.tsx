@@ -143,11 +143,11 @@ export const TabWr = styled.div`
   text-align: left;
 `;
 
-export const TotalBox = styled.div`
+export const TotalBox = styled.div<{ margin: any }>`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 0 0 20px;
+  margin: ${(props) => props.margin};
 `;
 export const TotalTxt = styled.span<{ fontWeight: any; textAlign: any }>`
   display: flex;
@@ -168,6 +168,10 @@ export const LinkTo = styled.a`
   span {
     text-decoration: underline;
   }
+`;
+
+export const ItemWr = styled.ul`
+  margin: 0 0 0 -20px;
 `;
 
 // My Assets Products Box

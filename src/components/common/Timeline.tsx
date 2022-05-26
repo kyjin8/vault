@@ -14,7 +14,7 @@ export type EpochResult = {
   currentEpoch: number;
   progress: number;
   msUntilEndEpoch: number;
-}
+};
 
 const Timeline = ({ operStart, operEnd }: EpochProps) => {
   // const { data } = useEpochInfo();
@@ -23,11 +23,10 @@ const Timeline = ({ operStart, operEnd }: EpochProps) => {
 
   useEffect(() => {
     const ttt = async () => {
-      await OperationEpochInfo(operStart, operEnd)
-        .then(res => {
-          setProgress(res.progress);
-          setMs(res.msUntilEndEpoch);
-        });
+      await OperationEpochInfo(operStart, operEnd).then((res) => {
+        setProgress(res.progress);
+        setMs(res.msUntilEndEpoch);
+      });
     };
     ttt();
   }, []);
@@ -70,11 +69,8 @@ const EpochTit = styled.div`
   span {
     display: inline-block;
     margin: 0 5px 0 0;
-    font-size: 16px;
-
-    @media all and (max-width: 979px) {
-      font-size: 14px;
-    }
+    font-size: 14px;
+    font-weight: bold;
   }
 
   .epoch-info {
@@ -110,14 +106,11 @@ const EpochBox = styled.div`
   flex-wrap: nowrap;
 
   strong {
+    position: relative;
+    top: 6px;
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
-    vertical-align: middle;
-
-    @media all and (max-width: 979px) {
-      font-size: 18px;
-    }
 
     &.epoch-txt {
       color: #dddddd;
