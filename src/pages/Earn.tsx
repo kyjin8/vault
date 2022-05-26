@@ -4,7 +4,6 @@ import EarnList from '../components/earn/EarnList';
 import { Wrap, WrapBox, SubTxt, SwitchWr } from '../components/style/style';
 import TimeLine from '../components/common/CurrTimeline';
 import PopupWarning from '../components/popups/PopupWarning';
-import PopupLaunch from '../components/popups/PopupLaunch';
 
 const earn = [
   {
@@ -25,7 +24,6 @@ const earn = [
 
 const Earn = () => {
   const [showWarningPopup, setWarningPopup] = useState(false);
-  const [showLaunchPopup, setLaunchPopup] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -73,7 +71,6 @@ const Earn = () => {
         )}
 
         <PopupWarning showWarningPopup={showWarningPopup} setWarningPopup={setWarningPopup} />
-        <PopupLaunch showLaunchPopup={showLaunchPopup} setLaunchPopup={setLaunchPopup} />
       </Wrap>
     </>
   );

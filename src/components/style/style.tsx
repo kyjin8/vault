@@ -258,7 +258,7 @@ export const Wrap = styled.div`
   margin: 80px 0;
   text-align: left;
 
-  strong {
+  > strong {
     font-size: ${sizes.middle};
     font-weight: ${weights.bold};
   }

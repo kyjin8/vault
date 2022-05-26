@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { fonts, weights, colors, sizes, borders } from '../../styles/Variables';
 import Token from '../../images/token_ssu.svg';
 import IconInfo from '../../images/info.svg';
+import PopupLaunch from '../popups/PopupLaunch';
 
 export type EarnProps = {
   name?: string;
@@ -14,6 +15,7 @@ export type EarnProps = {
 
 const EarnList: React.FC<EarnProps> = (props) => {
   const { name, apr, time, epoch, launch } = props;
+  const [showLaunchPopup, setLaunchPopup] = useState(false);
 
   return (
     <Wrap className={launch}>
@@ -41,7 +43,15 @@ const EarnList: React.FC<EarnProps> = (props) => {
           </HoverBox>
         </p>
       </Epoch>
-      <Btn className={launch}>Launch</Btn>
+      <Btn
+        className={launch}
+        onClick={() => {
+          setLaunchPopup(true);
+        }}
+      >
+        Launch
+      </Btn>
+      {showLaunchPopup ? <PopupLaunch showLaunchPopup={showLaunchPopup} setLaunchPopup={setLaunchPopup} /> : null}
     </Wrap>
   );
 };
