@@ -4,24 +4,28 @@ import EarnList from '../components/earn/EarnList';
 import { Wrap, WrapBox, SubTxt, SwitchWr } from '../components/style/style';
 import TimeLine from '../components/common/CurrTimeline';
 import PopupWarning from '../components/popups/PopupWarning';
+import PopupLaunch from '../components/popups/PopupLaunch';
 
 const earn = [
   {
     name: 'ASSET NAME',
     apr: '00.00%',
+    time: '00:00:00',
     epoch: 'XXX epoch - XXX epoch',
     launch: 'launch',
   },
   {
     name: 'ASSET NAME',
     apr: '00.00%',
+    time: '00:00:00',
     epoch: 'XXX epoch - XXX epoch',
     launch: 'closed',
   },
 ];
 
 const Earn = () => {
-  const [showWarningPopup, setWarningPopup] = useState(true);
+  const [showWarningPopup, setWarningPopup] = useState(false);
+  const [showLaunchPopup, setLaunchPopup] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -51,7 +55,7 @@ const Earn = () => {
             {earn.map((val) => {
               return (
                 <>
-                  <EarnList name={val.name} apr={val.apr} epoch={val.epoch} launch={val.launch} />
+                  <EarnList name={val.name} apr={val.apr} time={val.time} epoch={val.epoch} launch={val.launch} />
                 </>
               );
             })}
@@ -61,7 +65,7 @@ const Earn = () => {
             {earn.map((val) => {
               return (
                 <>
-                  <EarnList name={val.name} apr={val.apr} epoch={val.epoch} launch={val.launch} />
+                  <EarnList name={val.name} apr={val.apr} time={val.time} epoch={val.epoch} launch={val.launch} />
                 </>
               );
             })}
@@ -69,6 +73,7 @@ const Earn = () => {
         )}
 
         <PopupWarning showWarningPopup={showWarningPopup} setWarningPopup={setWarningPopup} />
+        <PopupLaunch showLaunchPopup={showLaunchPopup} setLaunchPopup={setLaunchPopup} />
       </Wrap>
     </>
   );
