@@ -6,7 +6,7 @@ import styled from 'styled-components';
 // import { fonts, weights, colors, sizes } from '../../styles/Variables';
 
 import Token from '../../images/token_ssu.svg';
-import { intlNumberFormat3 } from '../../utils/utils';
+import { intlNumberFormat4 } from '../../utils/utils';
 import { useSolfarm } from '../../action/queries';
 
 const Header = () => {
@@ -22,7 +22,7 @@ const Header = () => {
       </Logo>
       <BtnWr>
         <MySSU>
-          <img src={Token} alt="token ssu" />${intlNumberFormat3(solfarmPoolInfo?.data?.['SSU-USDC'].price ?? 0)}
+          <img src={Token} alt="token ssu" />${intlNumberFormat4(solfarmPoolInfo?.data?.['SSU-USDC'].price ?? 0)}
         </MySSU>
         <WalletMultiButton />
       </BtnWr>
