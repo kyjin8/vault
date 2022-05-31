@@ -20,7 +20,7 @@ const EarnBox: React.FC<EarnProps> = ({ name, closes, apr, timeline }) => {
         <span className="close-time">Closes in {closes}</span>
         <div className="product-name">
           {/* <TokenTo src={TokenIcon} alt="token sample" /> */}
-          <TokenTo src={TOKENS_ARRAY.find(token => token.symbol === name).picUrl ?? TokenIcon} alt="token img" />
+          <TokenTo src={TOKENS_ARRAY.find((token) => token.symbol === name).picUrl ?? TokenIcon} alt="token img" />
           <strong>{name}</strong>
         </div>
       </div>

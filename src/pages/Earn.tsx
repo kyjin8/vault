@@ -81,6 +81,10 @@ export default Earn;
 const TimeWr = styled.div`
   margin: 20px 0 50px 0;
 
+  @media all and (max-width: 979px) {
+    margin: 0;
+  }
+
   > article {
     position: relative;
     width: 100%;

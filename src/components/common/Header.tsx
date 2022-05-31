@@ -40,6 +40,11 @@ const Wrap = styled.div`
   width: 100%;
   height: 50px;
   margin: 0 auto;
+
+  @media all and (max-width: 979px) {
+    position: relative;
+    height: 80px;
+  }
 `;
 
 const Logo = styled.h1`
@@ -51,6 +56,12 @@ const Logo = styled.h1`
   line-height: 21px;
   font-weight: 600;
   cursor: pointer;
+
+  @media all and (max-width: 979px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
   img {
     width: 20px;
