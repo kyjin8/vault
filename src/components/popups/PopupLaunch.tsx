@@ -90,7 +90,7 @@ const PopupLaunch = ({ showLaunchPopup, setLaunchPopup }: LaunchProps) => {
             </ListWr>
             <Txt>USD $$$</Txt>
             <Transfer toPublicKey={myPub} amount={0.01} />
-            <Btn>Launch</Btn>
+            {/* <Btn>Launch</Btn> */}
           </Wrap>
         </>
       ) : null}
@@ -207,15 +207,15 @@ const List = styled.ul`
   }
 `;
 
-const Btn = styled.button`
-  width: 340px;
-  height: 50px;
-  padding: 10px 22px;
-  margin: 20px 0 0 0;
-  background: ${colors.yellow};
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: ${weights.bold};
-  color: ${colors.black};
-  text-decoration: none;
-`;
+// const Btn = styled.button`
+//   width: 340px;
+//   height: 50px;
+//   padding: 10px 22px;
+//   margin: 20px 0 0 0;
+//   background: ${colors.yellow};
+//   border-radius: 10px;
+//   font-size: 16px;
+//   font-weight: ${weights.bold};
+//   color: ${colors.black};
+//   text-decoration: none;
+// `;
