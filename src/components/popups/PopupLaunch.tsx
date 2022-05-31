@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { PublicKey } from '@solana/web3.js';
 import styled from 'styled-components';
 import IconClose from '../../images/popup-close.svg';
+import { useBalance, useTokenAccounts } from '../../utils/balance';
+import { TokenInfo, TOKENS } from '../../action/tokens';
+import Transfer from '../common/transfer/SendTransaction';
 
 import { fonts, weights, colors, sizes } from '../../styles/Variables';
 
@@ -10,7 +14,36 @@ interface LaunchProps {
   setLaunchPopup: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const Send = (toPublicKey: string, amount: number) => {
+  return null;
+};
+
+const SelectTokenList = ['SSU', 'BTC', 'ETH', 'USDC', 'USDT'].map((val) => ({
+  value: val,
+}));
+
 const PopupLaunch = ({ showLaunchPopup, setLaunchPopup }: LaunchProps) => {
+  const myPub = '54tQ6soXdwqg3i13NzQu6J8cKbBxfeFQWKGNcQ5CgcVx';
+
+  const [tokenAccounts] = useTokenAccounts();
+  const [fromToken, setFromToken] = useState('');
+
+  const getTokenInfo = (token: { value: string } | null) => {
+    if (!token || !token.value) return null;
+    return TOKENS?.[token.value] ?? null;
+  };
+
+  console.log(tokenAccounts);
+  console.log('토큰', fromToken);
+
+  // useEffect(() => {
+  //   async function update() {
+  //     const fromTokenInfo = await getTokenInfo(fromToken);
+  //     console.log('토큰 정보', fromTokenInfo);
+  //   }
+  //   setFromToken(SelectTokenList[0]);
+  // }, []);
+
   return (
     <>
       {showLaunchPopup ? (
@@ -41,6 +74,11 @@ const PopupLaunch = ({ showLaunchPopup, setLaunchPopup }: LaunchProps) => {
               <List>
                 <li>Balance</li>
                 <li>000.000</li>
+                {/* <li>
+                  {tokenAccounts
+                    ?.find((val) => val.mintAddress === getTokenInfo(fromToken)?.mintAddress)
+                    ?.balance?.fixed() || 0}
+                </li> */}
               </List>
               <form>
                 <input type="text" placeholder="Type amount to deposit" />
@@ -51,7 +89,8 @@ const PopupLaunch = ({ showLaunchPopup, setLaunchPopup }: LaunchProps) => {
               </form>
             </ListWr>
             <Txt>USD $$$</Txt>
-            <Btn>Launch</Btn>
+            <Transfer toPublicKey={myPub} amount={0.01} />
+            {/* <Btn>Launch</Btn> */}
           </Wrap>
         </>
       ) : null}
@@ -168,15 +207,15 @@ const List = styled.ul`
   }
 `;
 
-const Btn = styled.button`
-  width: 340px;
-  height: 50px;
-  padding: 10px 22px;
-  margin: 20px 0 0 0;
-  background: ${colors.yellow};
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: ${weights.bold};
-  color: ${colors.black};
-  text-decoration: none;
-`;
+// const Btn = styled.button`
+//   width: 340px;
+//   height: 50px;
+//   padding: 10px 22px;
+//   margin: 20px 0 0 0;
+//   background: ${colors.yellow};
+//   border-radius: 10px;
+//   font-size: 16px;
+//   font-weight: ${weights.bold};
+//   color: ${colors.black};
+//   text-decoration: none;
+// `;
