@@ -67,6 +67,12 @@ const Wrap = styled.article`
   border: ${borders.gray};
   border-radius: 20px;
   font-size: 18px;
+
+  @media all and (max-width: 979px) {
+    flex-wrap: wrap;
+    padding: 20px;
+    font-size: 16px;
+  }
 `;
 
 const TokenWr = styled.div`
@@ -76,12 +82,21 @@ const TokenWr = styled.div`
   img {
     width: 40px;
     height: 40px;
+
+    @media all and (max-width: 979px) {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 
 const TokenName = styled.span`
   margin: 0 0 0 15px;
   font-weight: ${weights.bold};
+
+  @media all and (max-width: 979px) {
+    margin: 0 0 0 8px;
+  }
 `;
 
 const Apr = styled.div`
@@ -91,6 +106,10 @@ const Apr = styled.div`
 const Epoch = styled.div`
   font-size: ${sizes.normal};
   font-weight: ${weights.normal};
+
+  @media all and (max-width: 979px) {
+    margin: 15px 0;
+  }
 
   .box {
     display: flex;
@@ -137,6 +156,10 @@ const Btn = styled.button`
   border-radius: 10px;
   font-size: 14px;
   font-weight: 600;
+
+  @media all and (max-width: 979px) {
+    width: 100%;
+  }
 
   &.closed {
     background: #c4c4c4;

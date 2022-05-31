@@ -92,6 +92,10 @@ const Wrap = styled.li`
   margin: 10px;
   border: ${borders.gray};
   border-radius: 20px;
+
+  @media all and (max-width: 979px) {
+    max-width: none;
+  }
 `;
 
 const TokenWr = styled.div`
@@ -132,6 +136,10 @@ const Contents = styled.div`
 
   .note {
     margin: 30px 0 20px 0;
+
+    @media all and (max-width: 979px) {
+      text-align: left;
+    }
   }
 `;
 
@@ -146,6 +154,10 @@ const Box = styled.div`
 
   .amount {
     font-weight: bold;
+
+    @media all and (max-width: 979px) {
+      text-align: left;
+    }
   }
 `;
 

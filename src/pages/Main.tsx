@@ -57,6 +57,11 @@ const Tab = styled(TabUnstyled)`
   font-weight: 600;
   opacity: 0.5;
 
+  @media all and (max-width: 979px) {
+    width: 100px;
+    font-size: 14px;
+  }
+
   &:hover {
     opacity: 1;
   }

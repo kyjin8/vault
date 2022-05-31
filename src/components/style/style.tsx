@@ -7,6 +7,10 @@ export const WrapBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media all and (max-width: 979px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const Logo = styled.h1`
@@ -103,6 +107,11 @@ export const StatusWr = styled.div`
   padding: 25px;
   border: ${borders.gray};
   border-radius: 20px;
+
+  @media all and (max-width: 979px) {
+    padding: 20px;
+    margin: 0 0 20px 0;
+  }
 `;
 
 export const Tit = styled.h2`
@@ -172,6 +181,11 @@ export const LinkTo = styled.a`
 
 export const ItemWr = styled.ul`
   margin: 0 0 0 -20px;
+
+  @media all and (max-width: 979px) {
+    margin: 0 auto;
+    text-align: center;
+  }
 `;
 
 // My Assets Products Box
@@ -258,9 +272,17 @@ export const Wrap = styled.div`
   margin: 80px 0;
   text-align: left;
 
+  @media all and (max-width: 979px) {
+    margin: 0;
+  }
+
   > strong {
     font-size: ${sizes.middle};
     font-weight: ${weights.bold};
+
+    @media all and (max-width: 979px) {
+      font-size: 16px;
+    }
   }
 `;
 
