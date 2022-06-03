@@ -1,7 +1,6 @@
-# Vault Project (On Solana chain)
+# Vault Project (discontinued project)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-And this is a discontinued project.
 
 ## Available Scripts
 
